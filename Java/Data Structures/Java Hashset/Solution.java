@@ -1,23 +1,33 @@
+import java.io.*;
 import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
 
-public class Solution {
+public class Solution
+{
 
-	public static void main(String[] args) {
+    public static void main(String[] args)
+    {
+        Scanner s = new Scanner(System.in);
+        int t = s.nextInt();
+        String[] pair_left = new String[t];
+        String[] pair_right = new String[t];
 
-		Scanner scan = new Scanner(System.in);
-		int n = scan.nextInt();
+        for (int i = 0; i < t; i++)
+        {
+            pair_left[i] = s.next();
+            pair_right[i] = s.next();
+        }
+        HashSet<String> uniquePairs = new HashSet<String>();
 
-		// Declare array a here
+        for (int i = 0; i < t; i++)
+        {
+            String left = pair_left[i];
+            String right = pair_right[i];
+            uniquePairs.add(left + " " + right);
+            System.out.println(uniquePairs.size());
 
-		for (int i = 0; i < n; i++) {
-			int val = scan.nextInt();
-			// Fill array a here
-		}
-		scan.close();
-
-		// Prints each sequential element in array a
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(a[i]);
-		}
-	}
+        }
+    }
 }

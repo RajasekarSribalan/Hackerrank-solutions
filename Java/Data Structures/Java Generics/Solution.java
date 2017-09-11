@@ -1,23 +1,44 @@
-import java.util.*;
+import java.io.IOException;
+import java.lang.reflect.Method;
 
-public class Solution {
+class Printer
+{
+    // Write your code here
 
-	public static void main(String[] args) {
+    <E> void printArray(E[] array)
+    {
+        // TODO Auto-generated method stub
+        int N = array.length;
+        for (int i = 0; i < N; i++)
+        {
+            System.out.println(array[i]);
+        }
+    }
+}
 
-		Scanner scan = new Scanner(System.in);
-		int n = scan.nextInt();
+public class Solution
+{
 
-		// Declare array a here
+    public static void main(String args[])
+    {
+        Printer myPrinter = new Printer();
+        Integer[] intArray =
+        { 1, 2, 3 };
+        String[] stringArray =
+        { "Hello", "World" };
+        myPrinter.printArray(intArray);
+        myPrinter.printArray(stringArray);
+        int count = 0;
 
-		for (int i = 0; i < n; i++) {
-			int val = scan.nextInt();
-			// Fill array a here
-		}
-		scan.close();
+        for (Method method : Printer.class.getDeclaredMethods())
+        {
+            String name = method.getName();
 
-		// Prints each sequential element in array a
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(a[i]);
-		}
-	}
+            if (name.equals("printArray"))
+                count++;
+        }
+
+        if (count > 1) System.out.println("Method overloading is not allowed!");
+
+    }
 }

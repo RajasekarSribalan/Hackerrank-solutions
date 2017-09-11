@@ -1,23 +1,55 @@
 import java.util.*;
 
-public class Solution {
+class Checker implements Comparator<Player>
+{
 
-	public static void main(String[] args) {
+    @Override
+    public int compare(Player p1, Player p2)
+    {
+        if (p2.score == p1.score)
+        {
+            return p1.name.compareTo(p2.name);
+        }
+        else
+        {
+            return p1.score > p2.score ? -1 : 1;
+        }
+    }
+}
 
-		Scanner scan = new Scanner(System.in);
-		int n = scan.nextInt();
+class Player
+{
+    String name;
+    int score;
 
-		// Declare array a here
+    Player(String name, int score)
+    {
+        this.name = name;
+        this.score = score;
+    }
+}
 
-		for (int i = 0; i < n; i++) {
-			int val = scan.nextInt();
-			// Fill array a here
-		}
-		scan.close();
+class Solution
+{
 
-		// Prints each sequential element in array a
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(a[i]);
-		}
-	}
+    public static void main(String[] args)
+    {
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+
+        Player[] player = new Player[n];
+        Checker checker = new Checker();
+
+        for (int i = 0; i < n; i++)
+        {
+            player[i] = new Player(scan.next(), scan.nextInt());
+        }
+        scan.close();
+
+        Arrays.sort(player, checker);
+        for (int i = 0; i < player.length; i++)
+        {
+            System.out.printf("%s %s\n", player[i].name, player[i].score);
+        }
+    }
 }
